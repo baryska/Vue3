@@ -20,6 +20,7 @@ export default {
       }
     },
     reset() {
+      this.$emit("reset", this.number);
       this.number = 0;
     }
   }

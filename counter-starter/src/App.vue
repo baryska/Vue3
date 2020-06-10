@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <h1>Já jsem Vue aplikace</h1>
-    <MyCounter color="yellow" max="5" v-on:oneUp="addToSum" />
-    <MyCounter color="red" max="8" v-on:oneUp="addToSum" />
-    <MyCounter color="blue" max="7" v-on:oneUp="addToSum" />
-    <MyCounter color="#000" max="3" v-on:oneUp="addToSum" />
+    <MyCounter color="yellow" max="5" v-on:oneUp="addToSum" v-on:reset="changeSum" />
+    <MyCounter color="red" max="8" v-on:oneUp="addToSum" v-on:reset="changeSum" />
+    <MyCounter color="blue" max="7" v-on:oneUp="addToSum" v-on:reset="changeSum" />
+    <MyCounter color="#000" max="3" v-on:oneUp="addToSum" v-on:reset="changeSum" />
     <p>Celkový součet je {{ counterSum }}</p>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
   methods: {
     addToSum() {
       this.counterSum++;
+    },
+    changeSum(difference) {
+      this.counterSum -= difference;
     }
   }
 };
