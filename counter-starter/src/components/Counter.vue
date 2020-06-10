@@ -1,12 +1,6 @@
 <template>
   <div class="container">
-    <div
-      class="counter"
-      v-on:click="addOne"
-      v-bind:style="{ backgroundColor: color }"
-    >
-      {{ number }}
-    </div>
+    <div class="counter" v-on:click="addOne" v-bind:style="{ backgroundColor: color }">{{ number }}</div>
     <button v-on:click="reset">Reset</button>
   </div>
 </template>
@@ -22,12 +16,13 @@ export default {
     addOne() {
       if (this.number < this.max) {
         this.number += 1;
+        this.$emit("oneUp");
       }
     },
     reset() {
       this.number = 0;
-    },
-  },
+    }
+  }
 };
 </script>
 

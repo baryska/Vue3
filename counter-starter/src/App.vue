@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <h1>Já jsem Vue aplikace</h1>
-    <MyCounter color="yellow" max="5" />
-    <MyCounter color="red" max="8" />
-    <MyCounter color="blue" max="7" />
-    <MyCounter color="#000" max="3" />
+    <MyCounter color="yellow" max="5" v-on:oneUp="addToSum" />
+    <MyCounter color="red" max="8" v-on:oneUp="addToSum" />
+    <MyCounter color="blue" max="7" v-on:oneUp="addToSum" />
+    <MyCounter color="#000" max="3" v-on:oneUp="addToSum" />
+    <p>Celkový součet je {{ counterSum }}</p>
   </div>
 </template>
 
@@ -13,8 +14,16 @@ import Counter from "./components/Counter.vue";
 export default {
   name: "App",
   components: {
-    MyCounter: Counter,
+    MyCounter: Counter
   },
+  data() {
+    return { counterSum: 0 };
+  },
+  methods: {
+    addToSum() {
+      this.counterSum++;
+    }
+  }
 };
 </script>
 
